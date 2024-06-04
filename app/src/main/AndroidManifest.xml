@@ -34,6 +34,7 @@
         <activity android:name=".Activity.UserRegistrationActivity" />
         <activity android:name=".Activity.ChangePasswordActivity" />
         <activity android:name=".Activity.PartnerRegistrationActivity" />
+        <activity android:name=".Activity.MenuActivity" />
     </application>
 
 </manifest>
