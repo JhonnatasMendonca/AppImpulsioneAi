@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Configuração para permitir tráfego HTTPS claro para impulsioneai-api.onrender.com -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">impulsioneai-api.onrender.com</domain>
+    </domain-config>
+    <!-- Configuração para permitir tráfego HTTP claro para localhost -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">10.0.2.2</domain>
+    </domain-config>
+</network-security-config>
