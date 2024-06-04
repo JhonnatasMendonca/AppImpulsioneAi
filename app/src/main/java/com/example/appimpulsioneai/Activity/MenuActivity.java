@@ -27,7 +27,7 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_component_menu);
 
         linkPerfilLinearLayout = findViewById(R.id.linkPerfilLinearLayout);
         linkHomeLinearLayout = findViewById(R.id.linkHomeLinearLayout);
