@@ -81,7 +81,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Gastronomia"
-                            android:textColor="@color/RoxoNincho"
+                            android:textColor="#8A00DE"
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
@@ -91,7 +91,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Moda"
-                            android:textColor="@color/RoxoNincho"
+                            android:textColor="#8A00DE"
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
@@ -101,7 +101,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Artesanato"
-                            android:textColor="@color/RoxoNincho"
+                            android:textColor="#8A00DE"
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
@@ -112,7 +112,7 @@
                             android:gravity="center"
                             android:paddingLeft="10dp"
                             android:text="Tecnologia"
-                            android:textColor="@color/RoxoNincho"
+                            android:textColor="#8A00DE"
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
@@ -129,7 +129,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Saúde"
-                            android:textColor="@color/RoxoNincho"
+                            android:textColor="#8A00DE"
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
@@ -139,7 +139,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Educação"
-                            android:textColor="@color/RoxoNincho"
+                            android:textColor="#8A00DE"
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
@@ -149,7 +149,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Estética"
-                            android:textColor="@color/RoxoNincho"
+                            android:textColor="#8A00DE"
                             android:textSize="13sp"
                             android:textStyle="bold" />
                     </TableRow>
@@ -180,11 +180,10 @@
                             android:id="@+id/nomeEmpreendimento"
                             android:layout_width="280dp"
                             android:layout_height="wrap_content"
-
-                            android:fontFamily="@font/baloo"
                             android:text="Nome Empreendimento"
                             android:textColor="#FF7D1E"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:fontFamily="@font/baloo"/>
 
                         <TextView
                             android:id="@+id/biografia"
@@ -269,8 +268,8 @@
                         android:text="INFORMAÇÕES"
                         android:background="@drawable/borda"
                         android:gravity="center"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/baloo" />
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="@font/baloo"/>
 
                     <LinearLayout
                         android:id="@+id/linhaUmInfo"
@@ -304,17 +303,19 @@
                                     android:layout_width="175dp"
                                     android:layout_height="wrap_content"
                                     android:contentDescription="Nome do Empreendimento"
-                                    android:fontFamily="@font/baloo"
                                     android:text="Nome Negocio"
-                                    android:textColor="@color/white"
+                                    android:textColor="#FFFFFF"
+                                    android:fontFamily="@font/baloo"
                                     android:textSize="16sp" />
+
+
 
                                 <TextView
                                     android:id="@+id/nomeEmpreendedorInfo"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Por: Rarissa"
-                                    android:textColor="@color/white"
+                                    android:textColor="#FFFFFF"
                                     android:textSize="12sp" />
                             </LinearLayout>
                         </LinearLayout>
@@ -338,7 +339,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Modalidade"
-                                android:textColor="@color/white"/>
+                                android:textColor="#FFFFFF"/>
 
                         </LinearLayout>
 
@@ -359,7 +360,7 @@
                                 android:layout_width="214dp"
                                 android:layout_height="wrap_content"
                                 android:text="EMAIL CADASTRADO"
-                                android:textColor="@color/white"
+                                android:textColor="#FFFFFF"
                                 android:textSize="12sp"
                                 android:textStyle="bold" />
 
@@ -368,7 +369,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="NÚMERO DE CONTATO"
-                                android:textColor="@color/white"
+                                android:textColor="#FFFFFF"
                                 android:textSize="12sp"
                                 android:textStyle="bold" />
                         </TableRow>
@@ -378,18 +379,18 @@
                             android:layout_height="match_parent">
 
                             <TextView
-                                android:id="@+id/email"
+                                android:id="@+id/emailEmpreendedor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="contatolegal@gmail.com"
-                                android:textColor="@color/white"/>
+                                android:textColor="#FFFFFF"/>
 
                             <TextView
                                 android:id="@+id/numContato"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="+55 (11) 40028922"
-                                android:textColor="@color/white"/>
+                                android:textColor="#FFFFFF"/>
                         </TableRow>
 
                         <TableRow
@@ -402,14 +403,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Instagram"
-                                android:textColor="@color/white"/>
+                                android:textColor="#FFFFFF"/>
 
                             <TextView
                                 android:id="@+id/facebook"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Facebook"
-                                android:textColor="@color/white"/>
+                                android:textColor="#FFFFFF"/>
                         </TableRow>
 
                     </TableLayout>
@@ -418,7 +419,7 @@
             </LinearLayout>
         </ScrollView>
 
-        <include layout="@layout/activity_menu" />
+        <include layout="@layout/activity_component_menu" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

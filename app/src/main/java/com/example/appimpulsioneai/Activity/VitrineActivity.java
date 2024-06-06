@@ -21,11 +21,11 @@ public class VitrineActivity extends AppCompatActivity {
 
     private ApiService apiService;
     private TextView nomeEmpreendimento;
-    private TextView nomeEmpreendedorInfo;
+    private TextView nomeEmpreendedor;
     private TextView biografia;
     private TextView modalidade;
     private TextView numContato;
-    private TextView email;
+    private TextView emailEmpreendedor;
     private TextView instagram;
     private TextView facebook;
 
@@ -51,10 +51,10 @@ public class VitrineActivity extends AppCompatActivity {
 
         nomeEmpreendimento = findViewById(R.id.nomeEmpreendimento);
         biografia = findViewById(R.id.biografia);
-        nomeEmpreendedorInfo = findViewById(R.id.nomeEmpreendimentoInfo);
+        nomeEmpreendedor = findViewById(R.id.nomeEmpreendimentoInfo);
         modalidade = findViewById(R.id.modalidade);
         numContato = findViewById(R.id.numContato);
-        email = findViewById(R.id.email);
+        emailEmpreendedor = findViewById(R.id.email);
         instagram = findViewById(R.id.instagram);
         facebook = findViewById(R.id.facebook);
 
