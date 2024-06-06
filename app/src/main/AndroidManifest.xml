@@ -35,13 +35,10 @@
         <activity android:name=".Activity.ChangePasswordActivity" />
         <activity android:name=".Activity.PartnerRegistrationActivity" />
         <activity android:name=".Activity.MenuActivity" />
-<<<<<<< HEAD
         <activity android:name=".Activity.ProdutoVitrineActivity" />
         <activity android:name=".Activity.VitrineActivity" />
 
-=======
         <activity android:name=".Activity.ProfileActivity" />
->>>>>>> main
     </application>
 
 </manifest>
