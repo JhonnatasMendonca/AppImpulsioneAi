@@ -1,7 +1,10 @@
 package com.example.appimpulsioneai.Services;
 
+import com.example.appimpulsioneai.Models.User;
 import com.example.appimpulsioneai.Request.LoginRequest;
 import com.example.appimpulsioneai.Response.LoginResponse;
+
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -31,6 +34,31 @@ public interface ApiService {
     @GET("usuarios/{id}")
     Call<User> getUserData(@retrofit2.http.Path("id") String userId);
 
+    @GET("usuarios/{id}")
+    Call<User> getUser(@Path("id") int userId);
+
+    @GET("verificaPlanosEmpreendedores")
+    Call<List<Partner>> verificaPlanosEmpreendedores();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     class PasswordChangeRequest {
         private String senha;
@@ -48,62 +76,11 @@ public interface ApiService {
         }
     }
 
-    // Classe User
-    class User {
-        private String nome;
-        private String dataNascimento;
-        private String cpf;
-        private String senha;
-        private String email;
 
-        public User(String nome, String dataNascimento, String cpf, String senha, String email) {
-            this.nome = nome;
-            this.dataNascimento = dataNascimento;
-            this.cpf = cpf;
-            this.senha = senha;
-            this.email = email;
-        }
 
-        public String getNome() {
-            return nome;
-        }
 
-        public void setNome(String nome) {
-            this.nome = nome;
-        }
 
-        public String getDataNascimento() {
-            return dataNascimento;
-        }
 
-        public void setDataNascimento(String dataNascimento) {
-            this.dataNascimento = dataNascimento;
-        }
-
-        public String getCpf() {
-            return cpf;
-        }
-
-        public void setCpf(String cpf) {
-            this.cpf = cpf;
-        }
-
-        public String getSenha() {
-            return senha;
-        }
-
-        public void setSenha(String senha) {
-            this.senha = senha;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
-        }
-    }
 
     class Partner {
         private String nomeCompleto;
@@ -120,7 +97,7 @@ public interface ApiService {
         private String facebook;
         private String idNicho;
         private String modalidade;
-        private Endereco endereco;
+        private ApiService.Endereco endereco;
 
         // Getters e setters
 
@@ -236,17 +213,17 @@ public interface ApiService {
             this.modalidade = modalidade;
         }
 
-        public Endereco getEndereco() {
+        public ApiService.Endereco getEndereco() {
             return endereco;
         }
 
-        public void setEndereco(Endereco endereco) {
+        public void setEndereco(ApiService.Endereco endereco) {
             this.endereco = endereco;
         }
 
         public Partner(String nomeCompleto, String dataNascimento, String cpf, String mei, String senha, String nomeEmpreendimento,
                        String site, String telefone, String email, String planoAssinatura, String instagram, String facebook,
-                       String idNicho, String modalidade, Endereco endereco) {
+                       String idNicho, String modalidade, ApiService.Endereco endereco) {
             this.nomeCompleto = nomeCompleto;
             this.dataNascimento = dataNascimento;
             this.cpf = cpf;
@@ -325,6 +302,5 @@ public interface ApiService {
             this.numero = numero;
         }
     }
-
 
 }

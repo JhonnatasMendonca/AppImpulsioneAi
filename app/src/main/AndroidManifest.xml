@@ -36,6 +36,8 @@
         <activity android:name=".Activity.PartnerRegistrationActivity" />
         <activity android:name=".Activity.MenuActivity" />
         <activity android:name=".Activity.ProfileActivity" />
+        <activity android:name=".Activity.DestaqueActivity" />
+        <activity android:name=".Activity.EditarDadosActivity" />
     </application>
 
 </manifest>

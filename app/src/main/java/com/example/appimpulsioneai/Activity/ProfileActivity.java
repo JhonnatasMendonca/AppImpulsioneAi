@@ -1,14 +1,17 @@
 package com.example.appimpulsioneai.Activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appimpulsioneai.R;
 import com.example.appimpulsioneai.Services.ApiService;
-import com.example.appimpulsioneai.Services.ApiService.User;
+import com.example.appimpulsioneai.Models.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,7 +27,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView dataNascimentoTextView;
     private TextView cpfTextView;
     private TextView emailTextView;
-
+    private Button editarDadosButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
         dataNascimentoTextView = findViewById(R.id.dataNascimentoTextView);
         cpfTextView = findViewById(R.id.cpfTextView);
         emailTextView = findViewById(R.id.emailTextView);
+        editarDadosButton = findViewById(R.id.editarDadosButton);
 
         // Obtenha o ID do usuário do SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
@@ -46,6 +50,14 @@ public class ProfileActivity extends AppCompatActivity {
         } else {
             // Lidar com a ausência de ID do usuário, se necessário
         }
+
+        editarDadosButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, EditarDadosActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void fetchUserData(String userId) {
@@ -80,4 +92,6 @@ public class ProfileActivity extends AppCompatActivity {
         cpfTextView.setText(user.getCpf());
         emailTextView.setText(user.getEmail());
     }
+
+
 }

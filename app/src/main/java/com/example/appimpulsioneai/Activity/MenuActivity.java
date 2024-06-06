@@ -33,22 +33,6 @@ public class MenuActivity extends AppCompatActivity {
         linkHomeLinearLayout = findViewById(R.id.linkHomeLinearLayout);
         linkSairLinearLayout = findViewById(R.id.linkSairLinearLayout);
 
-
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
-                .build();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        apiService = retrofit.create(ApiService.class);
-
-
         linkPerfilLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
