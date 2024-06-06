@@ -1,7 +1,9 @@
 package com.example.appimpulsioneai.Activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appimpulsioneai.Models.User;
 import com.example.appimpulsioneai.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,6 +32,7 @@ public class EditarDadosActivity extends AppCompatActivity {
     private EditText editTextNome, editTextDataNascimento, editTextEmail, editTextCpf;
     private TextView textViewEmailError, textViewCpfError;
     private Button buttonSalvar;
+    private Button VoltarPerfilButton;
 
     private ApiService apiService;
 
@@ -41,7 +47,8 @@ public class EditarDadosActivity extends AppCompatActivity {
         editTextCpf = findViewById(R.id.editTextCpf);
         textViewEmailError = findViewById(R.id.textViewEmailError);
         textViewCpfError = findViewById(R.id.textViewCpfError);
-        buttonSalvar = findViewById(R.id.buttonCadastrar);
+        buttonSalvar = findViewById(R.id.buttonAtualizar);
+        VoltarPerfilButton = findViewById(R.id.VoltarPerfilButton);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:8080/")
@@ -55,12 +62,25 @@ public class EditarDadosActivity extends AppCompatActivity {
         String userId = sharedPreferences.getString("userId", null);
 
         if (userId != null) {
-            getUserData(userId); // Passe o ID do usuário que deseja buscar
+            getUserData(userId);
         } else {
             Toast.makeText(this, "ID do usuário não encontrado", Toast.LENGTH_SHORT).show();
         }
 
-        buttonSalvar.setOnClickListener(v -> salvarDadosUsuario());
+        VoltarPerfilButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EditarDadosActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salvarDadosUsuario();
+            }
+        });
     }
 
     private void getUserData(String userId) {
@@ -93,9 +113,19 @@ public class EditarDadosActivity extends AppCompatActivity {
         String email = editTextEmail.getText().toString();
         String cpf = editTextCpf.getText().toString();
 
-        // Validar os dados se necessário
         if (nome.isEmpty() || dataNascimento.isEmpty() || email.isEmpty() || cpf.isEmpty()) {
             Toast.makeText(this, "Todos os campos devem ser preenchidos", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Formatar a data no formato correto
+        String formattedDate;
+        try {
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+            SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            formattedDate = outputFormat.format(inputFormat.parse(dataNascimento));
+        } catch (Exception e) {
+            Toast.makeText(this, "Erro ao formatar a data de nascimento", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -109,7 +139,7 @@ public class EditarDadosActivity extends AppCompatActivity {
         }
 
         // Criar o objeto User com os novos dados
-        User user = new User(nome, dataNascimento, cpf, "", email); // Senha pode ser deixada em branco se não estiver sendo editada
+        User user = new User(nome, formattedDate, cpf, "", email);
 
         // Chamar a API para atualizar os dados do usuário
         Call<User> call = apiService.updateUser(userId, user);
@@ -131,7 +161,6 @@ public class EditarDadosActivity extends AppCompatActivity {
         });
     }
 
-    // Interface da API embutida na mesma classe
     public interface ApiService {
         @GET("usuarios/{id}")
         Call<User> getUser(@Path("id") String userId);
