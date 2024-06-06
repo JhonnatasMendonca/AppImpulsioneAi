@@ -86,7 +86,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void updateUI(User user) {
-        primeiroNomeUsuarioTextView.setText("Olá, " + user.getNome() + " !");
+        primeiroNomeUsuarioTextView.setText("Olá, " + user.getNome().split(" ")[0] + " !");
         nomeUsuarioTextView.setText(user.getNome());
         dataNascimentoTextView.setText(user.getDataNascimento());
         cpfTextView.setText(user.getCpf());
