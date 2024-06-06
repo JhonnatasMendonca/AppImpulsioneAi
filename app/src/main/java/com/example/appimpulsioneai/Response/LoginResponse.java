@@ -36,4 +36,6 @@ public class LoginResponse {
     public boolean isSuccess() {
         return token != null && !token.isEmpty();
     }
+
+
 }

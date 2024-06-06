@@ -1,6 +1,7 @@
 package com.example.appimpulsioneai.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -98,9 +99,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<LoginResponse> call, retrofit2.Response<LoginResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    // Assuming that response.body().isSuccess() is a valid check for success
+
+                    String userId = response.body().getIdUsuario();
+
+                    // Salvar o ID do usuário no SharedPreferences
+                    SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("userId", userId);
+                    editor.apply();
+
                     Toast.makeText(MainActivity.this, "Login bem-sucedido", Toast.LENGTH_SHORT).show();
-                    // Intent para ir para a próxima tela
+
+                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                    startActivity(intent);
                 } else {
                     try {
                         String errorBody = response.errorBody().string();

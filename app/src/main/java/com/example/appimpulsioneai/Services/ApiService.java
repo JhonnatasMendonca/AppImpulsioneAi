@@ -28,6 +28,10 @@ public interface ApiService {
     @POST("empreendedores")
     Call<ResponseBody> registerPartner(@Body Partner partner);
 
+    @GET("usuarios/{id}")
+    Call<User> getUserData(@retrofit2.http.Path("id") String userId);
+
+
     class PasswordChangeRequest {
         private String senha;
 
