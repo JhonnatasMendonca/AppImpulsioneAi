@@ -150,27 +150,48 @@ public class EditarDadosActivity extends AppCompatActivity {
             return;
         }
 
-        // Criar o objeto User com os novos dados
-        User user = new User(nome, formattedDate, cpf, "", email);
-
-        // Chamar a API para atualizar os dados do usuário
-        Call<User> call = apiService.updateUser(userId, user);
-
+        // Obter dados atuais do usuário, incluindo a senha
+        Call<User> call = apiService.getUser(userId);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(EditarDadosActivity.this, "Dados do usuário atualizados com sucesso", Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful() && response.body() != null) {
+                    User currentUser = response.body();
+
+                    // Criar o objeto User com os novos dados, mantendo a senha atual
+                    User updatedUser = new User(nome, formattedDate, cpf, currentUser.getSenha(), email);
+
+                    // Chamar a API para atualizar os dados do usuário
+                    Call<Void> updateCall = apiService.updateUser(userId, updatedUser);
+                    updateCall.enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(EditarDadosActivity.this, "Dados do usuário atualizados com sucesso", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(EditarDadosActivity.this, ProfileActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(EditarDadosActivity.this, "Falha ao atualizar dados do usuário", Toast.LENGTH_SHORT).show();
+                                Log.e(TAG, "Falha ao atualizar dados do usuário: " + response.message());
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            Toast.makeText(EditarDadosActivity.this, "Erro: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.e(TAG, "Erro ao atualizar dados do usuário", t);
+                        }
+                    });
                 } else {
-                    Toast.makeText(EditarDadosActivity.this, "Falha ao atualizar dados do usuário", Toast.LENGTH_SHORT).show();
-                    Log.e(TAG, "Falha ao atualizar dados do usuário: " + response.message());
+                    Toast.makeText(EditarDadosActivity.this, "Falha ao obter dados do usuário", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Falha ao obter dados do usuário: " + response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 Toast.makeText(EditarDadosActivity.this, "Erro: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "Erro ao atualizar dados do usuário", t);
+                Log.e(TAG, "Erro ao obter dados do usuário", t);
             }
         });
     }
@@ -179,7 +200,7 @@ public class EditarDadosActivity extends AppCompatActivity {
         @GET("usuarios/{id}")
         Call<User> getUser(@Path("id") String userId);
 
-        @PUT("usuarios/{id}")
-        Call<User> updateUser(@Path("id") String userId, @Body User user);
+        @PUT("usuariosApp/{id}")
+        Call<Void> updateUser(@Path("id") String userId, @Body User user);
     }
 }
