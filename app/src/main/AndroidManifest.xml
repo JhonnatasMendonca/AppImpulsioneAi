@@ -39,6 +39,8 @@
         <activity android:name=".Activity.VitrineActivity" />
 
         <activity android:name=".Activity.ProfileActivity" />
+        <activity android:name=".Activity.DestaqueActivity" />
+        <activity android:name=".Activity.EditarDadosActivity" />
     </application>
 
 </manifest>
