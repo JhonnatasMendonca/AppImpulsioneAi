@@ -20,7 +20,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class VitrineActivity extends AppCompatActivity {
 
     private ApiService apiService;
-    private TextView nomeEmpreendimento, nomeEmpreendedorInfo, biografia, modalidade, numContato, email, instagram, facebook;
+    private TextView nomeEmpreendimento;
+    private TextView nomeEmpreendedorInfo;
+    private TextView biografia;
+    private TextView modalidade;
+    private TextView numContato;
+    private TextView email;
+    private TextView instagram;
+    private TextView facebook;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
