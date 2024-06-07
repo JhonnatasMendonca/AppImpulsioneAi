@@ -39,6 +39,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     private static final String TAG = "DestaqueActivity";
     private LinearLayout parentLinearLayout;
+
+    private LinearLayout linkPerfilLinearLayout;
+    private LinearLayout linkHomeLinearLayout;
+    private LinearLayout linkSairLinearLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,38 @@ public class ProfileActivity extends AppCompatActivity {
         cpfTextView = findViewById(R.id.cpfTextView);
         emailTextView = findViewById(R.id.emailTextView);
         editarDadosButton = findViewById(R.id.editarDadosButton);
+
+
+        linkPerfilLinearLayout = findViewById(R.id.linkPerfilLinearLayout);
+        linkHomeLinearLayout = findViewById(R.id.linkHomeLinearLayout);
+        linkSairLinearLayout = findViewById(R.id.linkSairLinearLayout);
+
+        linkPerfilLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        linkHomeLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(ProfileActivity.this, EditarDadosActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        linkSairLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Obtenha o ID do usuário do SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
