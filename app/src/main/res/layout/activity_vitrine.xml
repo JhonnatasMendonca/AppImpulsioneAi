@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/logoHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/logo_responsivo" />
+
+            <EditText
+                android:id="@+id/barraPesquisa"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:background="@drawable/campo_pesquisa"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Digite aqui..."
+                android:textColor="#919191"
+                android:textSize="14sp" />
+
+            <ImageButton
+                android:id="@+id/pesquisaButton"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:backgroundTint="#FFFFFF"
+                app:srcCompat="@drawable/icon_pesquisa"
+                android:contentDescription="Pesquisar"/>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="604dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TableLayout
+                    android:id="@+id/nichosAgrupados"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="25dp">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/gastronomiaNicho"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Gastronomia"
+                            android:textColor="#8A00DE"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/modaNicho"
+                            android:layout_width="51dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Moda"
+                            android:textColor="#8A00DE"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/artesanatoNicho"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Artesanato"
+                            android:textColor="#8A00DE"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tecnologiaNicho"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingLeft="10dp"
+                            android:text="Tecnologia"
+                            android:textColor="#8A00DE"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/saudeNicho"
+                            android:layout_width="62dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Saúde"
+                            android:textColor="#8A00DE"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/educacaoNicho"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Educação"
+                            android:textColor="#8A00DE"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/esteticaNicho"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Estética"
+                            android:textColor="#8A00DE"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                </TableLayout>
+
+                <LinearLayout
+                    android:id="@+id/infoEmpreendedor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="208dp"
+                        android:layout_height="98dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/perfil_vitrine" />
+
+                    <LinearLayout
+                        android:layout_width="359dp"
+                        android:layout_height="112dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/nomeEmpreendimento"
+                            android:layout_width="280dp"
+                            android:layout_height="wrap_content"
+                            android:text="Nome Empreendimento"
+                            android:textColor="#FF7D1E"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/baloo"/>
+
+                        <TextView
+                            android:id="@+id/biografia"
+                            android:layout_width="match_parent"
+                            android:layout_height="91dp"
+                            android:text="Etiam pharetra diam ex, ut vehicula odio interdum quis. Suspendisse tincidunt ex in malesuada laoreet. Aliquam dolor lacus, tincidunt eu pretium a, commodo et turpis. Duis mattis scelerisque ante id lacinia. Cras vitae purus dolor. "
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TableLayout
+                    android:id="@+id/blocoProdutos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TableRow
+                        android:id="@+id/tituloProdutos"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:id="@+id/textView14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Veja nossos produtos"
+                            android:textColor="#CE5700"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/linhaProdutos1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <include layout="@layout/activity_produto_vitrine" />
+
+                        <include layout="@layout/activity_produto_vitrine" />
+                    </TableRow>
+
+
+                    <TableRow
+                        android:id="@+id/linhaProdutos2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <include layout="@layout/activity_produto_vitrine" />
+
+                        <include layout="@layout/activity_produto_vitrine" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/linhaProdutos3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <include layout="@layout/activity_produto_vitrine" />
+
+                        <include layout="@layout/activity_produto_vitrine" />
+                    </TableRow>
+
+                </TableLayout>
+
+                <LinearLayout
+                    android:id="@+id/blocoInformacoes"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="15dp"
+                    android:background="#4F007E">
+
+                    <TextView
+                        android:id="@+id/tituloInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="INFORMAÇÕES"
+                        android:background="@drawable/borda"
+                        android:gravity="center"
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="@font/baloo"/>
+
+                    <LinearLayout
+                        android:id="@+id/linhaUmInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+
+                        <LinearLayout
+                            android:layout_width="233dp"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/fotoPerfil"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/icon_perfil" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:layout_marginLeft="8dp">
+
+                                <TextView
+                                    android:id="@+id/nomeEmpreendimentoInfo"
+                                    android:layout_width="175dp"
+                                    android:layout_height="wrap_content"
+                                    android:contentDescription="Nome do Empreendimento"
+                                    android:text="Nome Negocio"
+                                    android:textColor="#FFFFFF"
+                                    android:fontFamily="@font/baloo"
+                                    android:textSize="16sp" />
+
+
+
+                                <TextView
+                                    android:id="@+id/nomeEmpreendedorInfo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Por: Rarissa"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/textoModalidade"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="MODALIDADE DO SERVIÇO"
+                                android:textColor="#FFC79E"
+                                android:textSize="12sp"/>
+
+                            <TextView
+                                android:id="@+id/modalidade"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Modalidade"
+                                android:textColor="#FFFFFF"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <TableRow
+                            android:layout_width="309dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/tituloEmail"
+                                android:layout_width="214dp"
+                                android:layout_height="wrap_content"
+                                android:text="EMAIL CADASTRADO"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tituloNumero"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="NÚMERO DE CONTATO"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/emailEmpreendedor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="contatolegal@gmail.com"
+                                android:textColor="#FFFFFF"/>
+
+                            <TextView
+                                android:id="@+id/numContato"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="+55 (11) 40028922"
+                                android:textColor="#FFFFFF"/>
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/instagram"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Instagram"
+                                android:textColor="#FFFFFF"/>
+
+                            <TextView
+                                android:id="@+id/facebook"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Facebook"
+                                android:textColor="#FFFFFF"/>
+                        </TableRow>
+
+                    </TableLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <include layout="@layout/activity_component_menu" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

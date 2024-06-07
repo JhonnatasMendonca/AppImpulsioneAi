@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appimpulsioneai.R;
 import com.example.appimpulsioneai.Services.ApiService;
-import com.example.appimpulsioneai.Services.ApiService.User;
+import com.example.appimpulsioneai.Models.User;
 import com.example.appimpulsioneai.Utils.CPFValidator;
 
 import java.util.regex.Matcher;

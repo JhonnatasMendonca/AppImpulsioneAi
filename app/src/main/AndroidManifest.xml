@@ -38,8 +38,16 @@
         <activity android:name=".Activity.ChangePasswordActivity" />
         <activity android:name=".Activity.PartnerRegistrationActivity" />
         <activity android:name=".Activity.MenuActivity" />
+        <activity android:name=".Activity.ProdutoVitrineActivity" />
+        <activity android:name=".Activity.VitrineActivity" />
+
         <activity android:name=".Activity.ProfileActivity" />
+<<<<<<< HEAD
         <activity android:name=".Activity.MainActivity"/>
+=======
+        <activity android:name=".Activity.DestaqueActivity" />
+        <activity android:name=".Activity.EditarDadosActivity" />
+>>>>>>> 3e55f8913dc85eed70d9df19860bbde7f6bb3ca3
     </application>
 
 </manifest>
