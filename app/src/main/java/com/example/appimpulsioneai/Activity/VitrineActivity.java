@@ -4,8 +4,11 @@ import com.example.appimpulsioneai.Models.Empreendedor;
 import com.example.appimpulsioneai.R;
 import com.example.appimpulsioneai.Services.ApiService;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +30,10 @@ public class VitrineActivity extends AppCompatActivity {
     private TextView instagram;
     private TextView facebook;
 
+    private LinearLayout linkPerfilLinearLayout;
+    private LinearLayout linkHomeLinearLayout;
+    private LinearLayout linkSairLinearLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +48,37 @@ public class VitrineActivity extends AppCompatActivity {
         emailEmpreendedor = findViewById(R.id.emailEmpreendedor);
         instagram = findViewById(R.id.instagram);
         facebook = findViewById(R.id.facebook);
+
+        linkPerfilLinearLayout = findViewById(R.id.linkPerfilLinearLayout);
+        linkHomeLinearLayout = findViewById(R.id.linkHomeLinearLayout);
+        linkSairLinearLayout = findViewById(R.id.linkSairLinearLayout);
+
+        linkPerfilLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(VitrineActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        linkHomeLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(VitrineActivity.this, EditarDadosActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        linkSairLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(VitrineActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Obtenha o ID do usuário do SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
