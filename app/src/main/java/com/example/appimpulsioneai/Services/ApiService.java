@@ -4,10 +4,8 @@ import com.example.appimpulsioneai.Models.Empreendedor;
 import com.example.appimpulsioneai.Models.User;
 import com.example.appimpulsioneai.Request.LoginRequest;
 import com.example.appimpulsioneai.Response.LoginResponse;
-import com.example.appimpulsioneai.models.EmpreendedorModel;
-import com.example.appimpulsioneai.models.NichoModel;
-
-import java.util.List;
+import com.example.appimpulsioneai.Models.EmpreendedorModel;
+import com.example.appimpulsioneai.Models.NichoModel;
 
 import java.util.List;
 

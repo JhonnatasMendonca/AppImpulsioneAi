@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.view.View;
-import android.widget.Toast;
 import android.view.LayoutInflater;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,10 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.appimpulsioneai.R;
 import com.example.appimpulsioneai.Services.ApiService;
 import com.example.appimpulsioneai.Services.RetrofitClient;
-import com.example.appimpulsioneai.models.EmpreendedorModel;
-import com.example.appimpulsioneai.models.NichoModel;
+import com.example.appimpulsioneai.Models.EmpreendedorModel;
+import com.example.appimpulsioneai.Models.NichoModel;
 
-import java.nio.file.attribute.FileTime;
 import java.util.List;
 
 import retrofit2.Call;

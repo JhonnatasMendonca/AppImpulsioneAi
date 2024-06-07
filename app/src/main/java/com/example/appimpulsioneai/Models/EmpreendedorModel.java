@@ -1,4 +1,4 @@
-package com.example.appimpulsioneai.models;
+package com.example.appimpulsioneai.Models;
 
 import com.google.gson.annotations.SerializedName;
 
