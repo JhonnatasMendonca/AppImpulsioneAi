@@ -1,5 +1,6 @@
 package com.example.appimpulsioneai.Services;
 
+import com.example.appimpulsioneai.Models.Empreendedor;
 import com.example.appimpulsioneai.Models.User;
 import com.example.appimpulsioneai.Request.LoginRequest;
 import com.example.appimpulsioneai.Response.LoginResponse;
@@ -36,6 +37,11 @@ public interface ApiService {
 
     @GET("usuarios/{id}")
     Call<User> getUser(@Path("id") int userId);
+
+    @GET("empreendedores/{id}")
+    Call<Empreendedor> getEmpreendedorData(@retrofit2.http.Path("id") String empreendedorId);
+//    @GET("empreendedores/{id}")
+//    Call<Empreendedor> getEmpreendedorData(@Path("id") String empreendedorId);
 
     @GET("verificaPlanosEmpreendedores")
     Call<List<Partner>> verificaPlanosEmpreendedores();

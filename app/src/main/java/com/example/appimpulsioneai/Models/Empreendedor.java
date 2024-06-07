@@ -10,8 +10,6 @@ public class Empreendedor {
     private String numContato;
     private String emailEmpreendedor;
 
-
-
     public Empreendedor(String nomeEmpreendimento, String nomeEmpreendedor, String biografia, String modalidade, String emailEmpreendedor, String numContato, String instagram, String facebook) {
         this.nomeEmpreendimento = nomeEmpreendimento;
         this.nomeEmpreendedor = nomeEmpreendedor;
