@@ -24,7 +24,7 @@ public class ProdutoVitrineActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_produto_vitrine);
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(30, TimeUnit.SECONDS)
