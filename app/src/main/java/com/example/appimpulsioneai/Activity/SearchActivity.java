@@ -2,6 +2,7 @@ package com.example.appimpulsioneai.Activity;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,6 +49,7 @@ public class SearchActivity extends AppCompatActivity {
                 List<EmpreendedorModel> empreendimentos = response.body();
 
                 for (EmpreendedorModel empreendedor : empreendimentos){
+                    final EmpreendedorModel empreendedorFinal = empreendedor;
 
                     View empreendimentoView = LayoutInflater.from(SearchActivity.this).inflate(R.layout.component_search_empreendedor, container, false);
 
@@ -66,8 +68,19 @@ public class SearchActivity extends AppCompatActivity {
                     );
                     params.setMargins(0, 0, 0, 20); // margem inferior de 20dp
                     empreendimentoView.setLayoutParams(params);
+                    empreendimentoView.setOnClickListener(new View.OnClickListener(){
+                        @Override
+                        public void onClick(View view) {
+                            // Ação a ser realizada quando o container (ou seja, o empreendimento) é clicado
+                            // Aqui você pode iniciar a atividade VitrineActivity passando o ID do empreendimento como parâmetro
+                            Intent intent = new Intent(SearchActivity.this, VitrineActivity.class);
+                            intent.putExtra("EMPREENDEDOR_ID", empreendedorFinal.getId()); // Passe o ID do empreendedor como parâmetro
+                            startActivity(intent);
+                        }
+                    });
 
                     container.addView(empreendimentoView);
+
                 }
             }
 
