@@ -44,7 +44,7 @@ public class VitrineActivity extends AppCompatActivity {
 
         // Obtenha o ID do usuário do SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-        String idUsuarioEmpreendedor = getIntent().getStringExtra("EMPREENDEDOR_ID");
+        String idUsuarioEmpreendedor = sharedPreferences.getString("empreendedorId", "");
 
         // Verifique se o ID do usuário não está vazio
         if (!idUsuarioEmpreendedor.isEmpty()) {
