@@ -145,7 +145,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/VoltarMenuButton"
+            android:id="@+id/VoltarPerfilButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -154,7 +154,7 @@
             android:text="Cancelar" />
 
         <Button
-            android:id="@+id/buttonCadastrar"
+            android:id="@+id/buttonAtualizar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
