@@ -2,6 +2,7 @@ package com.example.appimpulsioneai.Services;
 
 import com.example.appimpulsioneai.Request.LoginRequest;
 import com.example.appimpulsioneai.Response.LoginResponse;
+import com.example.appimpulsioneai.models.EmpreendedorModel;
 import com.example.appimpulsioneai.models.NichoModel;
 
 import java.util.List;
@@ -35,6 +36,8 @@ public interface ApiService {
     Call<User> getUserData(@retrofit2.http.Path("id") String userId);
     @GET("nichos")
     Call<List<NichoModel>> getNichos();
+    @GET("empreendedores")
+    Call<List<EmpreendedorModel>> getEmpreendedores();
 
 
     class PasswordChangeRequest {

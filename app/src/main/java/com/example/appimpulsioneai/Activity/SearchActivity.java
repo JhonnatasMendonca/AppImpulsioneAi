@@ -6,15 +6,21 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.view.View;
+import android.widget.Toast;
+import android.view.LayoutInflater;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appimpulsioneai.R;
 import com.example.appimpulsioneai.Services.ApiService;
 import com.example.appimpulsioneai.Services.RetrofitClient;
+import com.example.appimpulsioneai.models.EmpreendedorModel;
 import com.example.appimpulsioneai.models.NichoModel;
 
+import java.nio.file.attribute.FileTime;
 import java.util.List;
 
 import retrofit2.Call;
@@ -28,10 +34,50 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         LinearLayout linearLayout = findViewById(R.id.nichoLinearLayout);
+        ScrollView scrollView = findViewById(R.id.scroLlEmpreendimetos);
+        LinearLayout container = new LinearLayout(SearchActivity.this);
+        container.setOrientation(LinearLayout.VERTICAL);
+        scrollView.addView(container);
 
-        ApiService service = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+            ApiService service = RetrofitClient.getRetrofitInstance().create(ApiService.class);
 
         Call<List<NichoModel>> call = service.getNichos();
+        Call<List<EmpreendedorModel>> empreendedoresGeral = service.getEmpreendedores();
+
+        empreendedoresGeral.enqueue(new Callback<List<EmpreendedorModel>>() {
+            @Override
+            public void onResponse(Call<List<EmpreendedorModel>> call, Response<List<EmpreendedorModel>> response) {
+                List<EmpreendedorModel> empreendimentos = response.body();
+
+                for (EmpreendedorModel empreendedor : empreendimentos){
+
+                    View empreendimentoView = LayoutInflater.from(SearchActivity.this).inflate(R.layout.component_search_empreendedor, container, false);
+
+                    TextView nomeTextView = empreendimentoView.findViewById(R.id.nomeEmprendimento);
+                    TextView nichoTextView = empreendimentoView.findViewById(R.id.nicho);
+                    TextView descricaoTextView = empreendimentoView.findViewById(R.id.descircaoEmprendimento);
+
+                    nomeTextView.setText(empreendedor.getNomeEmpreendimento());
+                    nichoTextView.setText(empreendedor.getNicho().getNome());
+                    descricaoTextView.setText(empreendedor.getBiografia());
+
+                    // Define os LayoutParams dinamicamente
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                    );
+                    params.setMargins(0, 0, 0, 20); // margem inferior de 20dp
+                    empreendimentoView.setLayoutParams(params);
+
+                    container.addView(empreendimentoView);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<EmpreendedorModel>> call, Throwable t) {
+                Log.e(TAG, "Falha na requisição: " + t.getMessage());
+            }
+        });
 
         call.enqueue(new Callback<List<NichoModel>>() {
             @Override
