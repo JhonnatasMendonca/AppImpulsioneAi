@@ -66,7 +66,7 @@ public class VitrineActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(VitrineActivity.this, EditarDadosActivity.class);
+                Intent intent = new Intent(VitrineActivity.this, SearchActivity.class);
                 startActivity(intent);
             }
         });

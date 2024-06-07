@@ -56,8 +56,8 @@ public interface ApiService {
     Call<List<Partner>> verificaPlanosEmpreendedores();
 
 
-    @GET("/verificaPlanosEmpreendedores")
-    Call<List<EmpreendedorModel>> getEmpreendedores();
+//    @GET("/verificaPlanosEmpreendedores")
+//    Call<List<EmpreendedorModel>> getEmpreendedores();
 
 
 

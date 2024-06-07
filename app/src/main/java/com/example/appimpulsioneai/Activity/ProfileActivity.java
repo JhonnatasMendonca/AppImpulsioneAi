@@ -73,7 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(ProfileActivity.this, EditarDadosActivity.class);
+                Intent intent = new Intent(ProfileActivity.this, SearchActivity.class);
                 startActivity(intent);
             }
         });
@@ -145,7 +145,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void fetchEmpreendedores() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/") // Substitua pelo URL correto da sua API
+                .baseUrl("https://impulsioneaiapi.onrender.com/") // Substitua pelo URL correto da sua API
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -215,7 +215,7 @@ public class ProfileActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.WRAP_CONTENT
         ));
         if (empreendedor.getNicho() != null) {
-            nichoTextView.setText(empreendedor.getNicho().getNicho());
+            nichoTextView.setText(empreendedor.getNicho().getNome());
         } else {
             nichoTextView.setText("Nicho não disponível");
         }

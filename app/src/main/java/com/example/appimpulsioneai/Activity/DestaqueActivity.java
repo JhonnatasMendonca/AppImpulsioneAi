@@ -101,7 +101,7 @@ public class DestaqueActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.WRAP_CONTENT
         ));
         if (empreendedor.getNicho() != null) {
-            nichoTextView.setText(empreendedor.getNicho().getNicho());
+            nichoTextView.setText(empreendedor.getNicho().getNome());
         } else {
             nichoTextView.setText("Nicho não disponível");
         }

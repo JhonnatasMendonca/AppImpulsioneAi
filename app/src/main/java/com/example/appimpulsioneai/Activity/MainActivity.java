@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, ForgotPasswordActivity.class);
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(intent);
             }
         });
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
                     Toast.makeText(MainActivity.this, "Login bem-sucedido", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(MainActivity.this, VitrineActivity.class);
+                    Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                     startActivity(intent);
                 } else {
                     try {
