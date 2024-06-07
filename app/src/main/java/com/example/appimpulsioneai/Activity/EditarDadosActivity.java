@@ -56,7 +56,7 @@ public class EditarDadosActivity extends AppCompatActivity {
         VoltarPerfilButton = findViewById(R.id.VoltarPerfilButton);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl("https://impulsioneaiapi.onrender.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
