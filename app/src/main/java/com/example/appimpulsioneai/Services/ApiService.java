@@ -5,6 +5,8 @@ import com.example.appimpulsioneai.Models.Empreendedor;
 import com.example.appimpulsioneai.Models.User;
 import com.example.appimpulsioneai.Request.LoginRequest;
 import com.example.appimpulsioneai.Response.LoginResponse;
+import com.example.appimpulsioneai.Models.EmpreendedorModel;
+import com.example.appimpulsioneai.Models.NichoModel;
 
 import java.util.List;
 
@@ -35,6 +37,10 @@ public interface ApiService {
 
     @GET("usuarios/{id}")
     Call<User> getUserData(@retrofit2.http.Path("id") String userId);
+    @GET("nichos")
+    Call<List<NichoModel>> getNichos();
+    @GET("empreendedores")
+    Call<List<EmpreendedorModel>> getEmpreendedores();
 
     @GET("usuarios/{id}")
     Call<User> getUser(@Path("id") int userId);
