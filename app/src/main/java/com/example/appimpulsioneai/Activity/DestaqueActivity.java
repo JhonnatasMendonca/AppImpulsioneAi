@@ -1,87 +1,123 @@
 package com.example.appimpulsioneai.Activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appimpulsioneai.Models.EmpreendedorModel;
 import com.example.appimpulsioneai.R;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
 
 public class DestaqueActivity extends AppCompatActivity {
 
-    private LinearLayout containerEmpreendedores;
     private static final String TAG = "DestaqueActivity";
+    private LinearLayout parentLinearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_component_destaque);
 
-//        containerEmpreendedores = findViewById(R.id.containerEmpreendedores);
-//
-//        fetchEmpreendedores();
-//    }
-//
-//    private void fetchEmpreendedores() {
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl("http://10.0.2.2:8080/") // Alterar para a URL correta da API
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//
-//        ApiService apiService = retrofit.create(ApiService.class);
-//        Call<List<Empreendedor>> call = apiService.verificaPlanosEmpreendedores();
-//
-//        call.enqueue(new Callback<List<Empreendedor>>() {
-//            @Override
-//            public void onResponse(Call<List<Empreendedor>> call, Response<List<Empreendedor>> response) {
-//                if (response.isSuccessful() && response.body() != null) {
-//                    List<Empreendedor> empreendedores = response.body();
-//                    displayEmpreendedores(empreendedores);
-//                } else {
-//                    Log.e(TAG, "Response was not successful or body is null");
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Empreendedor>> call, Throwable t) {
-//                Log.e(TAG, "API call failed", t);
-//            }
-//        });
-//    }
-//
-//    private void displayEmpreendedores(List<Empreendedor> empreendedores) {
-//        for (Empreendedor empreendedor : empreendedores) {
-//            LinearLayout layout = new LinearLayout(this);
-//            layout.setOrientation(LinearLayout.VERTICAL);
-//
-//            ImageView imageView = new ImageView(this);
-//            imageView.setLayoutParams(new LinearLayout.LayoutParams(
-//                    LinearLayout.LayoutParams.MATCH_PARENT,
-//                    LinearLayout.LayoutParams.WRAP_CONTENT));
-//            imageView.setImageResource(R.drawable.destaque); // Usar imagem do drawable
-//
-//            TextView nomeTextView = new TextView(this);
-//            nomeTextView.setLayoutParams(new LinearLayout.LayoutParams(
-//                    LinearLayout.LayoutParams.MATCH_PARENT,
-//                    LinearLayout.LayoutParams.WRAP_CONTENT));
-//            nomeTextView.setText(empreendedor.getNomeEmpreendimento());
-//            nomeTextView.setTextColor(getResources().getColor(R.color.white));
-//            nomeTextView.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
-//
-//            TextView nichoTextView = new TextView(this);
-//            nichoTextView.setLayoutParams(new LinearLayout.LayoutParams(
-//                    LinearLayout.LayoutParams.MATCH_PARENT,
-//                    LinearLayout.LayoutParams.WRAP_CONTENT));
-//            nichoTextView.setText(empreendedor.getNicho());
-//            nichoTextView.setTextColor(getResources().getColor(R.color.white));
-//            nichoTextView.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
-//
-//            layout.addView(imageView);
-//            layout.addView(nomeTextView);
-//            layout.addView(nichoTextView);
-//
-//            containerEmpreendedores.addView(layout);
-//        }
-//    }
+        parentLinearLayout = findViewById(R.id.parentLinearLayout);
+        fetchEmpreendedores();
+    }
+
+    private void fetchEmpreendedores() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://10.0.2.2:8080/") // Substitua pelo URL correto da sua API
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ApiService apiService = retrofit.create(ApiService.class);
+
+        apiService.getEmpreendedores().enqueue(new Callback<List<EmpreendedorModel>>() {
+            @Override
+            public void onResponse(Call<List<EmpreendedorModel>> call, Response<List<EmpreendedorModel>> response) {
+                if (response.isSuccessful()) {
+                    List<EmpreendedorModel> empreendedores = response.body();
+                    if (empreendedores != null && !empreendedores.isEmpty()) {
+                        for (EmpreendedorModel empreendedor : empreendedores) {
+                            addEmpreendedorToLayout(empreendedor);
+                        }
+                    } else {
+                        Log.d(TAG, "No data received from API");
+                    }
+                } else {
+                    Log.e(TAG, "Response was not successful");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<EmpreendedorModel>> call, Throwable t) {
+                Log.e(TAG, "API call failed", t);
+            }
+        });
+    }
+
+    private void addEmpreendedorToLayout(EmpreendedorModel empreendedor) {
+        Log.d(TAG, "Adding empreendedor: " + empreendedor.getNomeEmpreendimento());
+
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+
+        ImageView imageView = new ImageView(this);
+        imageView.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+        imageView.setImageResource(R.drawable.destaque); // ou carregue a imagem dinamicamente
+
+        TextView nomeTextView = new TextView(this);
+        nomeTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+        nomeTextView.setText(empreendedor.getNomeEmpreendimento());
+        nomeTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        nomeTextView.setTextColor(Color.parseColor("#F3F3F3"));
+
+        TextView nichoTextView = new TextView(this);
+        nichoTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+        if (empreendedor.getNicho() != null) {
+            nichoTextView.setText(empreendedor.getNicho().getNicho());
+        } else {
+            nichoTextView.setText("Nicho não disponível");
+        }
+        nichoTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        nichoTextView.setTextColor(Color.parseColor("#F3F3F3"));
+
+        linearLayout.addView(imageView);
+        linearLayout.addView(nomeTextView);
+        linearLayout.addView(nichoTextView);
+
+        parentLinearLayout.addView(linearLayout);
+    }
+
+    // Interface para Retrofit
+    public interface ApiService {
+        @GET("/verificaPlanosEmpreendedores")
+        Call<List<EmpreendedorModel>> getEmpreendedores();
     }
 }
